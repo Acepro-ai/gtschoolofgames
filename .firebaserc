@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "goodtechschool"
-  }
+    "goodtechschool-prod": "goodtechschools-b3958",
+    "default": "goodtechschools-b3958"
+  },
+  "targets": {},
+  "etags": {}
 }
