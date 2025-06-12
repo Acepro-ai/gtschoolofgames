@@ -33,7 +33,7 @@ const RegistrationDialog = ({
           {buttonText}
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-hidden">
+      <DialogContent className="sm:max-w-[360px] max-h-[240px] overflow-hidden">
         <DialogHeader>
           <DialogTitle className="text-center">Register for Free Masterclass</DialogTitle>
         </DialogHeader>
