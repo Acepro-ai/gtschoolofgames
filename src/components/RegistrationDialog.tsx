@@ -41,7 +41,7 @@ const RegistrationDialog = ({
           <iframe 
             width="100%" 
             height="100%" 
-            src="https://webinar.zoho.com/meeting/register/embed?sessionId=1090512591" 
+            src="https://webinar.zoho.com/meeting/register/embed?sessionId=1092661401" 
             frameBorder="0"
             className="rounded-md"
             title="Zoho Webinar Registration"
