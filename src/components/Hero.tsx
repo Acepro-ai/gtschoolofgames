@@ -9,7 +9,7 @@ const USD_LINK = "https://paystack.shop/pay/jmogbu8nsq";
 const Hero = () => {
   const country = useCountry();
   const isNigeria = country === "Nigeria";
-  const price = isNigeria ? "₦90,000" : "$90";
+  const price = isNigeria ? "₦90,000" : "$99";
   const payLink = isNigeria ? NGN_LINK : USD_LINK;
 
   return (
@@ -35,13 +35,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 className="bg-gamedev-purple hover:bg-gamedev-dark-purple button-shine"
-
                 onClick={() => window.open(payLink, "_blank")}
-
-                onClick={() =>
-                  window.open("https://paystack.com/pay/goodtechgamedev", "_blank")
-                }
-
               >
                 Join the Bootcamp for {price}
               </Button>
@@ -49,9 +43,9 @@ const Hero = () => {
               <RegistrationDialog
                 buttonText="Contact us for more enquiries"
                 variant="outline"
+              />
 
               <Button
-
                 size="lg"
                 variant="outline"
                 className="bg-transparent border-white text-white hover:bg-white/10"

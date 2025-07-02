@@ -10,8 +10,8 @@ const USD_LINK = "https://paystack.shop/pay/jmogbu8nsq";
 const Pricing = () => {
   const country = useCountry();
   const isNigeria = country === "Nigeria";
-  const price = isNigeria ? "₦90,000" : "$90";
-  const oldPrice = isNigeria ? "₦180,000" : "$180";
+  const price = isNigeria ? "₦90,000" : "$99";
+  const oldPrice = isNigeria ? "₦180,000" : "$200";
   const payLink = isNigeria ? NGN_LINK : USD_LINK;
 
   return (
