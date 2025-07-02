@@ -1,16 +1,9 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { useCountry } from "@/lib/useCountry";
-
-const NGN_LINK = "https://paystack.com/pay/goodtechgamedev";
-const USD_LINK = "https://paystack.shop/pay/jmogbu8nsq";
+import RegistrationDialog from "./RegistrationDialog";
 
 const CallToAction = () => {
-  const country = useCountry();
-  const isNigeria = country === "Nigeria";
-  const price = isNigeria ? "₦90,000" : "$99";
-  const payLink = isNigeria ? NGN_LINK : USD_LINK;
-
   return (
     <section className="py-20 bg-gradient-to-r from-gamedev-purple to-gamedev-dark-purple text-white">
       <div className="container px-4 md:px-6">
@@ -23,18 +16,16 @@ const CallToAction = () => {
             <Button 
               size="lg" 
               className="bg-white text-gamedev-purple hover:bg-gamedev-light-purple button-shine"
-              onClick={() => window.open(payLink, "_blank")}
+              onClick={() => window.open("https://paystack.com/pay/goodtechgamedev", "_blank")}
             >
-              Join the Bootcamp for {price}
+              Join the Bootcamp for ₦90,000
             </Button>
-            <Button
+            <RegistrationDialog 
+              buttonText="Register for Free Masterclass"
+              variant="outline" 
               size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white/10"
-              onClick={() => window.open("https://wa.me/2349134969703", "_blank")}
-            >
-              Contact us for more enquiries
-            </Button>
+              triggerClassName="border-white text-white hover:bg-white/10"
+            />
           </div>
         </div>
       </div>

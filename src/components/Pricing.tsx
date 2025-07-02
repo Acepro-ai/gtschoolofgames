@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import RegistrationDialog from "./RegistrationDialog";
-import { useCountry } from "@/lib/useCountry";
 
-const NGN_LINK = "https://paystack.com/pay/goodtechgamedev";
-const USD_LINK = "https://paystack.shop/pay/jmogbu8nsq";
+const NGN_PAYSTACK_LINK = "https://paystack.com/pay/goodtechgamedev";
+const USD_PAYSTACK_LINK = "https://paystack.shop/pay/jmogbu8nsq";
 
 const Pricing = () => {
-  const country = useCountry();
-  const isNigeria = country === "Nigeria";
-  const price = isNigeria ? "₦90,000" : "$99";
-  const oldPrice = isNigeria ? "₦180,000" : "$200";
-  const payLink = isNigeria ? NGN_LINK : USD_LINK;
+  const [isNigeria, setIsNigeria] = useState(true);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("https://ipapi.co/json/")
+      .then(res => res.json())
+      .then(data => {
+        setIsNigeria(data.country_code === "NG");
+        setLoading(false);
+      })
+      .catch(() => {
+        setIsNigeria(true); // fallback to Nigeria
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <section id="pricing" className="py-16 bg-gamedev-soft-gray">
@@ -40,8 +48,8 @@ const Pricing = () => {
                 </div>
                 <div className="text-right">
                   <div className="flex items-center">
-                    <span className="text-lg line-through text-gray-400 mr-2">{oldPrice}</span>
-                    <span className="text-3xl font-bold">{price}</span>
+                    <span className="text-lg line-through text-gray-400 mr-2">{isNigeria ? "₦180,000" : "$199"}</span>
+                    <span className="text-3xl font-bold">{isNigeria ? "₦90,000" : "$99"}</span>
                   </div>
                   <p className="text-xs text-gamedev-purple font-medium">50% discount</p>
                 </div>
@@ -86,23 +94,13 @@ const Pricing = () => {
                 <Button 
                   size="lg" 
                   className="w-full bg-gamedev-purple hover:bg-gamedev-dark-purple button-shine"
-                  onClick={() => window.open(payLink, "_blank")}
+                  onClick={() => {
+                    const link = isNigeria ? NGN_PAYSTACK_LINK : USD_PAYSTACK_LINK;
+                    window.open(link, "_blank");
+                  }}
+                  disabled={loading}
                 >
-                  Join the Bootcamp for {price}
-                </Button>
-
-                <RegistrationDialog 
-                  buttonText="Contact us for more enquiries"
-                  variant="outline" 
-
-                <Button
-
-                  size="lg"
-                  variant="outline"
-                  className="w-full bg-gamedev-light-purple text-gamedev-purple hover:bg-gamedev-light-purple/80 border-2 border-gamedev-purple font-bold button-shine"
-                  onClick={() => window.open("https://wa.me/2349134969703", "_blank")}
-                >
-                  Contact us for more enquiries
+                  {loading ? "Loading..." : isNigeria ? "Join the Bootcamp for ₦90,000" : "Join the Bootcamp for $99"}
                 </Button>
               </div>
             </CardFooter>
