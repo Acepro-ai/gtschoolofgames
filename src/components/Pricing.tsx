@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
@@ -81,12 +80,14 @@ const Pricing = () => {
                 >
                   Join the Bootcamp for ₦90,000
                 </Button>
-                <RegistrationDialog 
-                  buttonText="Register for Free Masterclass"
-                  variant="outline" 
+                <Button
                   size="lg"
-                  triggerClassName="w-full bg-gamedev-light-purple text-gamedev-purple hover:bg-gamedev-light-purple/80 border-2 border-gamedev-purple font-bold button-shine"
-                />
+                  variant="outline"
+                  className="w-full bg-gamedev-light-purple text-gamedev-purple hover:bg-gamedev-light-purple/80 border-2 border-gamedev-purple font-bold button-shine"
+                  onClick={() => window.open("https://wa.me/2349134969703", "_blank")}
+                >
+                  Contact us for more enquiries
+                </Button>
               </div>
             </CardFooter>
           </Card>

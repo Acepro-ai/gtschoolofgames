@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import RegistrationDialog from "./RegistrationDialog";
@@ -20,12 +19,14 @@ const CallToAction = () => {
             >
               Join the Bootcamp for ₦90,000
             </Button>
-            <RegistrationDialog 
-              buttonText="Register for Free Masterclass"
-              variant="outline" 
+            <Button
               size="lg"
-              triggerClassName="border-white text-white hover:bg-white/10"
-            />
+              variant="outline"
+              className="border-white text-white hover:bg-white/10"
+              onClick={() => window.open("https://wa.me/2349134969703", "_blank")}
+            >
+              Contact us for more enquiries
+            </Button>
           </div>
         </div>
       </div>

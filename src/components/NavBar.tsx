@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 
@@ -30,9 +29,9 @@ const NavBar = () => {
           <Button 
             variant="outline" 
             className="hidden sm:flex border-gamedev-purple text-gamedev-purple hover:bg-gamedev-light-purple"
-            onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSfxOI6QGolTouvHplIQEGbhCAF0jl_erk9LyP1ZZHVi1QSlhA/viewform?usp=preview", "_blank")}
+            onClick={() => window.open("https://wa.me/2349134969703", "_blank")}
           >
-            Free Masterclass
+            Contact us for more enquiries
           </Button>
           <Button 
             className="bg-gamedev-purple hover:bg-gamedev-dark-purple button-shine"
