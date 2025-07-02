@@ -2,8 +2,18 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import RegistrationDialog from "./RegistrationDialog";
+import { useCountry } from "@/lib/useCountry";
+
+const NGN_LINK = "https://paystack.com/pay/goodtechgamedev";
+const USD_LINK = "https://paystack.shop/pay/jmogbu8nsq";
 
 const Pricing = () => {
+  const country = useCountry();
+  const isNigeria = country === "Nigeria";
+  const price = isNigeria ? "₦90,000" : "$90";
+  const oldPrice = isNigeria ? "₦180,000" : "$180";
+  const payLink = isNigeria ? NGN_LINK : USD_LINK;
+
   return (
     <section id="pricing" className="py-16 bg-gamedev-soft-gray">
       <div className="container px-4 md:px-6">
@@ -30,8 +40,8 @@ const Pricing = () => {
                 </div>
                 <div className="text-right">
                   <div className="flex items-center">
-                    <span className="text-lg line-through text-gray-400 mr-2">₦180,000</span>
-                    <span className="text-3xl font-bold">₦90,000</span>
+                    <span className="text-lg line-through text-gray-400 mr-2">{oldPrice}</span>
+                    <span className="text-3xl font-bold">{price}</span>
                   </div>
                   <p className="text-xs text-gamedev-purple font-medium">50% discount</p>
                 </div>
@@ -76,11 +86,17 @@ const Pricing = () => {
                 <Button 
                   size="lg" 
                   className="w-full bg-gamedev-purple hover:bg-gamedev-dark-purple button-shine"
-                  onClick={() => window.open("https://paystack.com/pay/goodtechgamedev", "_blank")}
+                  onClick={() => window.open(payLink, "_blank")}
                 >
-                  Join the Bootcamp for ₦90,000
+                  Join the Bootcamp for {price}
                 </Button>
+
+                <RegistrationDialog 
+                  buttonText="Contact us for more enquiries"
+                  variant="outline" 
+
                 <Button
+
                   size="lg"
                   variant="outline"
                   className="w-full bg-gamedev-light-purple text-gamedev-purple hover:bg-gamedev-light-purple/80 border-2 border-gamedev-purple font-bold button-shine"

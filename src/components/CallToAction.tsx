@@ -1,8 +1,17 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import RegistrationDialog from "./RegistrationDialog";
+import { useCountry } from "@/lib/useCountry";
+
+const NGN_LINK = "https://paystack.com/pay/goodtechgamedev";
+const USD_LINK = "https://paystack.shop/pay/jmogbu8nsq";
 
 const CallToAction = () => {
+  const country = useCountry();
+  const isNigeria = country === "Nigeria";
+  const price = isNigeria ? "₦90,000" : "$90";
+  const payLink = isNigeria ? NGN_LINK : USD_LINK;
+
   return (
     <section className="py-20 bg-gradient-to-r from-gamedev-purple to-gamedev-dark-purple text-white">
       <div className="container px-4 md:px-6">
@@ -15,10 +24,15 @@ const CallToAction = () => {
             <Button 
               size="lg" 
               className="bg-white text-gamedev-purple hover:bg-gamedev-light-purple button-shine"
-              onClick={() => window.open("https://paystack.com/pay/goodtechgamedev", "_blank")}
+              onClick={() => window.open(payLink, "_blank")}
             >
-              Join the Bootcamp for ₦90,000
+              Join the Bootcamp for {price}
             </Button>
+
+          <RegistrationDialog 
+              buttonText="Contact us for more enquiries"
+              variant="outline" 
+
             <Button
               size="lg"
               variant="outline"

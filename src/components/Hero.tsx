@@ -1,8 +1,17 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import RegistrationDialog from "./RegistrationDialog";
+import { useCountry } from "@/lib/useCountry";
+
+const NGN_LINK = "https://paystack.com/pay/goodtechgamedev";
+const USD_LINK = "https://paystack.shop/pay/jmogbu8nsq";
 
 const Hero = () => {
+  const country = useCountry();
+  const isNigeria = country === "Nigeria";
+  const price = isNigeria ? "₦90,000" : "$90";
+  const payLink = isNigeria ? NGN_LINK : USD_LINK;
+
   return (
     <section className="relative bg-hero-pattern bg-cover bg-center py-20 md:py-32">
       <div className="container px-4 md:px-6">
@@ -26,13 +35,23 @@ const Hero = () => {
               <Button
                 size="lg"
                 className="bg-gamedev-purple hover:bg-gamedev-dark-purple button-shine"
+
+                onClick={() => window.open(payLink, "_blank")}
+
                 onClick={() =>
                   window.open("https://paystack.com/pay/goodtechgamedev", "_blank")
                 }
+
               >
-                Join the Bootcamp
+                Join the Bootcamp for {price}
               </Button>
+
+              <RegistrationDialog
+                buttonText="Contact us for more enquiries"
+                variant="outline"
+
               <Button
+
                 size="lg"
                 variant="outline"
                 className="bg-transparent border-white text-white hover:bg-white/10"
