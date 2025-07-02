@@ -35,16 +35,32 @@ const Hero = () => {
               <Button
                 size="lg"
                 className="bg-gamedev-purple hover:bg-gamedev-dark-purple button-shine"
+
                 onClick={() => window.open(payLink, "_blank")}
+
+                onClick={() =>
+                  window.open("https://paystack.com/pay/goodtechgamedev", "_blank")
+                }
+
               >
                 Join the Bootcamp for {price}
               </Button>
+
               <RegistrationDialog
                 buttonText="Contact us for more enquiries"
                 variant="outline"
+
+              <Button
+
                 size="lg"
-                triggerClassName="bg-transparent border-white text-white hover:bg-white/10"
-              />
+                variant="outline"
+                className="bg-transparent border-white text-white hover:bg-white/10"
+                onClick={() =>
+                  window.open("https://wa.me/2349134969703", "_blank")
+                }
+              >
+                Contact us for more enquiries
+              </Button>
             </div>
             <div className="flex items-center space-x-2 text-sm text-gray-300">
               <svg
