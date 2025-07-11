@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import RegistrationDialog from "./RegistrationDialog";
 import { useCountry } from "@/lib/useCountry";
 
 const NGN_LINK = "https://paystack.com/pay/goodtechgamedev";
@@ -10,8 +9,8 @@ const USD_LINK = "https://paystack.shop/pay/jmogbu8nsq";
 const Pricing = () => {
   const country = useCountry();
   const isNigeria = country === "Nigeria";
-  const price = isNigeria ? "₦90,000" : "$90";
-  const oldPrice = isNigeria ? "₦180,000" : "$180";
+  const price = isNigeria ? "₦90,000" : "$99";
+  const oldPrice = isNigeria ? "₦180,000" : "$200";
   const payLink = isNigeria ? NGN_LINK : USD_LINK;
 
   return (
@@ -90,10 +89,6 @@ const Pricing = () => {
                 >
                   Join the Bootcamp for {price}
                 </Button>
-
-                <RegistrationDialog 
-                  buttonText="Contact us for more enquiries"
-                  variant="outline" 
 
                 <Button
 
